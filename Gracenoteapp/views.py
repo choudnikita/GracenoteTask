@@ -32,8 +32,11 @@ class TeamInfoViewSet(viewsets.ModelViewSet):
         try:
             if team_id:
                 queryset = Teams.objects.filter(team_id = team_id)
-            if teamname:
+            elif teamname:
                 queryset = Teams.objects.filter(name = teamname)
+            else:
+                return Response(
+                        {'Error' : 'Provide team id or team name to get team information'})
             serializer = TeamSerializer(queryset, many=True)
             if serializer.data:
                 # Parsing data to get readable data 
@@ -75,8 +78,11 @@ class LeagueDataViewSet(viewsets.ModelViewSet):
         try:
             if league_id:
                 queryset = GameResults.objects.filter(league_id=league_id)
-            if league_name:
+            elif league_name:
                 queryset = GameResults.objects.filter(league_name=league_name)
+            else:
+                return Response(
+                        {'Error' : 'Provide league id or league name to get league details'})
             serializer = LeagueDataSerializer(queryset, many=True)
             return Response({'League Data' : serializer.data})
         except Exception as ex:
@@ -106,8 +112,11 @@ class GameResultViewSet(viewsets.ModelViewSet):
         try:
             if game_id:
                 queryset = GameResults.objects.filter(game_id=game_id)
-            if gamedate:
+            elif gamedate:
                 queryset = GameResults.objects.filter(gamedate=gamedate)
+            else:
+                return Response(
+                        {'Error' : 'Provide game id or game date to get game results'})
             serializer = GameResultSerializer(queryset, many=True)
             return Response({'Game Results' : serializer.data})
         except Exception as ex:

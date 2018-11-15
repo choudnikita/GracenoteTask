@@ -25,6 +25,6 @@ class GameResultSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = GameResults
-        fields = ('game_id', 'gamedate', 'goals', 'penalty', 'result')
-        read_only_fields = ('goals', 'penalty', 'result')
+        fields = ('game_id', 'gamedate', 'team_id', 'teamname', 'goals', 'penalty', 'result')
+        read_only_fields = ('goals', 'penalty', 'result', 'team_id', 'teamname')
 

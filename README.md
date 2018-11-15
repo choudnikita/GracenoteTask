@@ -14,7 +14,7 @@ This application is developed using Django Rest Framework Browsable API to expos
 
 Query parameters can be posted using Rawdata or HTML form in webpage.
 
-Unit testcases have been added in test.py in Gracenodeapp.
+Unit testcases have been added in tests.py in Gracenodeapp directory.
 
 Heroku host service has been used to host this application.
 
